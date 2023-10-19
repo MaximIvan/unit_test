@@ -36,14 +36,20 @@ public class Shop {
         return shop.get(i).getCost();
     }
 
-    // Метод должен вернуть отсортированный по возрастанию по цене список продуктов
+    /**
+     Метод должен вернуть отсортированный по возрастанию по цене список продуктов
+     */
+
     public List<Product> sortProductsByPrice() {
         Comparator compare = new CompareCost();
         Collections.sort(shop, compare);
         return shop;
     }
 
-    // Метод должен вернуть самый дорогой продукт
+    /**
+     Метод должен вернуть самый дорогой продукт
+     */
+
     public Product getMostExpensiveProduct() {
         float maxCost = 0;
         int index = 0;

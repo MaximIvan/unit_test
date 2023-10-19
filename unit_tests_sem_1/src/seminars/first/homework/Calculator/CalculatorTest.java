@@ -74,7 +74,9 @@ public class CalculatorTest {
 //            assertThat(seminars.first.homework.Calculator.Calculator.calculation(2, 6, '+')).isEqualTo(0);
 
 
-        // Проверка метода при недопустимых аргументах
+        /**
+         Проверка метода при недопустимых аргументах
+         */
         assertThatThrownBy(() -> Calculator.calculatingDiscount(-100, 10))
                 .isInstanceOf(ArithmeticException.class)
                 .hasMessage("Cумма покупки сосчитана не верно");
@@ -84,7 +86,9 @@ public class CalculatorTest {
         assertThatThrownBy(() -> Calculator.calculatingDiscount(100, 101))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Ошибка в размере скидки");
-        // Проверка, что метод возвращает правильную сумму покупки со скидкой
+        /**
+         Проверка, что метод возвращает правильную сумму покупки со скидкой
+         */
         assertThat(Calculator.calculatingDiscount(100, 10)).isEqualTo(90.0);
         assertThat(Calculator.calculatingDiscount(100, 20)).isEqualTo(80.0);
         assertThat(Calculator.calculatingDiscount(100, 50)).isEqualTo(50.0);

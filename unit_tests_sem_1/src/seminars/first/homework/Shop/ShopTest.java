@@ -27,7 +27,10 @@ public class ShopTest {
         testMostExpensiveProduct(shop, expensive);
     }
 
-    //Метод проверки сортировки
+    /**
+     Метод проверки сортировки
+     */
+
     public static void testSorting(Shop shop) {
         for (int i = 0; i < shop.getLength() - 1; i++) {
             assertThat(shop.getProductCostInShop(i + 1)).isGreaterThan(shop.getProductCostInShop(i));
