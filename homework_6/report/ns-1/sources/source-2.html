@@ -1,0 +1,235 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Calculator</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">&lt;empty package name&gt;</a>
+</div>
+
+<h1>Coverage Summary for Class: Calculator (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Calculator</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/47)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;import java.util.Scanner;
+&nbsp;
+<b class="nc">&nbsp;public class Calculator {</b>
+<b class="nc">&nbsp;    private static final Scanner scanner = new Scanner(System.in);</b>
+&nbsp;
+&nbsp;    public static void main(String[] args) {
+&nbsp;//        int firstOperand = getOperand();
+&nbsp;//        int secondOperand = getOperand();
+&nbsp;//        char operator = getOperator();
+&nbsp;//        int result = calculation(firstOperand, secondOperand, operator);
+&nbsp;//        System.out.println(&quot;Operation result is: &quot; + result);
+&nbsp;
+&nbsp;//        System.out.println(calculatingDiscount(-100, 25));
+&nbsp;
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    public static char getOperator() {
+<b class="nc">&nbsp;        System.out.println(&quot;Enter operation: &quot;);</b>
+<b class="nc">&nbsp;        char operation = scanner.next().charAt(0);</b>
+<b class="nc">&nbsp;        return operation;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static int getOperand() {
+<b class="nc">&nbsp;        System.out.println(&quot;Enter operand: &quot;);</b>
+&nbsp;        int operand;
+<b class="nc">&nbsp;        if (scanner.hasNextInt()) {</b>
+<b class="nc">&nbsp;            operand = scanner.nextInt();</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            System.out.println(&quot;You have mistaken, try again&quot;);</b>
+<b class="nc">&nbsp;            if (scanner.hasNext()) {</b>
+<b class="nc">&nbsp;                scanner.next();</b>
+<b class="nc">&nbsp;                operand = getOperand();</b>
+&nbsp;            } else {
+<b class="nc">&nbsp;                throw new IllegalStateException(&quot;Input error&quot;);</b>
+&nbsp;            }
+&nbsp;        }
+<b class="nc">&nbsp;        return operand;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static int calculation(int firstOperand, int secondOperand, char operator) {
+&nbsp;        int result;
+&nbsp;
+<b class="nc">&nbsp;        switch (operator) {</b>
+&nbsp;            case &#39;+&#39;:
+<b class="nc">&nbsp;                result = firstOperand + secondOperand;</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case &#39;-&#39;:
+<b class="nc">&nbsp;                result = firstOperand - secondOperand;</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case &#39;*&#39;:
+<b class="nc">&nbsp;                result = firstOperand * secondOperand;</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case &#39;/&#39;:
+<b class="nc">&nbsp;                if (secondOperand != 0) {</b>
+<b class="nc">&nbsp;                    result = firstOperand / secondOperand;</b>
+<b class="nc">&nbsp;                    break;</b>
+&nbsp;                } else {
+<b class="nc">&nbsp;                    throw new ArithmeticException(&quot;Division by zero is not possible&quot;);</b>
+&nbsp;                }
+&nbsp;            default:
+<b class="nc">&nbsp;                throw new IllegalStateException(&quot;Unexpected value operator: &quot; + operator);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return result;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // HW1.1: Придумайте и опишите (можно в псевдокоде) функцию извлечения корня и
+&nbsp;    // необходимые проверки для него используя граничные случаи
+&nbsp;    public static double squareRootExtraction(double number) {
+&nbsp;
+&nbsp;        //  0
+&nbsp;        //  Отрицательные числа
+&nbsp;        //  Дробные значения корней
+&nbsp;        //  Целые
+&nbsp;
+&nbsp;        double t;
+<b class="nc">&nbsp;        double squareRoot = number / 2;</b>
+&nbsp;        do {
+<b class="nc">&nbsp;            t = squareRoot;</b>
+<b class="nc">&nbsp;            squareRoot = (t + (number / t)) / 2;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        while ((t - squareRoot) != 0);</b>
+<b class="nc">&nbsp;        return squareRoot;</b>
+&nbsp;
+&nbsp;        // или просто return Math.sqrt(number);
+&nbsp;    }
+&nbsp;
+&nbsp;    // Нужно написать в калькуляторе метод вычисления суммы покупки со скидкой и проверить его, используя AssertJ
+&nbsp;    // Примерная сигнатура и тело метода:
+&nbsp;    public static double calculatingDiscount(double purchaseAmount, int discountAmount) {
+&nbsp;        // purchaseAmount - сумма покупки
+&nbsp;        // discountAmount - размер скидки
+&nbsp;
+<b class="nc">&nbsp;        double discountedAmount = 0; // Сумма со скидкой (первоначальная сумма - скидка%)</b>
+&nbsp;
+<b class="nc">&nbsp;        if (purchaseAmount &gt;= 0) {</b>
+&nbsp;
+<b class="nc">&nbsp;            if (discountAmount &gt;= 0 &amp;&amp; discountAmount &lt;= 100) {</b>
+<b class="nc">&nbsp;                discountedAmount = purchaseAmount - (purchaseAmount * discountAmount) / 100;</b>
+&nbsp;            } else {
+<b class="nc">&nbsp;                throw new ArithmeticException(&quot;Скидка должна быть в диапазоне от 0 до 100%&quot;);</b>
+&nbsp;            }
+&nbsp;
+&nbsp;        } else {
+&nbsp;            // Сумма покупки не может быть отрицательной
+<b class="nc">&nbsp;            throw new ArithmeticException(&quot;Сумма покупки не может быть отрицательной&quot;);</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        return discountedAmount; // Метод должен возвращать сумму покупки со скидкой</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //HW2.3L: Добавьте функцию возведения в степень в калькулятор и протестируйте
+&nbsp;    public static int pow(int value, int powValue) {
+<b class="nc">&nbsp;        int result = 1;</b>
+&nbsp;
+<b class="nc">&nbsp;        for (int a = 1; a &lt;= powValue; a++) {</b>
+<b class="nc">&nbsp;            if (a == 0) return 1;</b>
+<b class="nc">&nbsp;            result = result * value;</b>
+&nbsp;
+&nbsp;        }
+<b class="nc">&nbsp;        return result;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double computeAreaCircle(double radius) {
+<b class="nc">&nbsp;        return Math.PI * radius * radius;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //HW3.1L: Попробуйте реализовать в калькуляторе с помощью методологии TDD (с описанием шагов) функцию расчета длины окружности
+&nbsp;    // P=2?R
+&nbsp;    public double computeLengthCircle(int r) {
+<b class="nc">&nbsp;        return 2*Math.PI*r;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-11-04 06:58</div>
+</div>
+</body>
+</html>

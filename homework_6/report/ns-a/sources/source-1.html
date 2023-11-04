@@ -1,0 +1,308 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Main</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">seminars.fourth</a>
+</div>
+
+<h1>Coverage Summary for Class: Main (seminars.fourth)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Main</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/5)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package seminars.fourth;
+&nbsp;
+&nbsp;import seminars.fourth.book.Book;
+&nbsp;import seminars.fourth.book.BookRepository;
+&nbsp;import seminars.fourth.book.BookService;
+&nbsp;import seminars.fourth.book.InMemoryBookRepository;
+&nbsp;import seminars.fourth.database.DataProcessor;
+&nbsp;import seminars.fourth.database.Database;
+&nbsp;import seminars.fourth.hotel.BookingService;
+&nbsp;import seminars.fourth.hotel.HotelService;
+&nbsp;import seminars.fourth.message.MessageService;
+&nbsp;import seminars.fourth.message.NotificationService;
+&nbsp;import seminars.fourth.weather.WeatherReporter;
+&nbsp;import seminars.fourth.weather.WeatherService;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+<b class="nc">&nbsp;public class Main {</b>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    //**
+&nbsp;    // 4.3. Предположим, у вас есть класс WeatherService, который имеет метод getCurrentTemperature(),
+&nbsp;    // обращающийся к внешнему API для получения информации о текущей температуре.
+&nbsp;    // Вам нужно протестировать другой класс, WeatherReporter, который использует WeatherService.
+&nbsp;    // Создайте мок-объект для WeatherService с использованием Mockito.
+&nbsp;    // *
+&nbsp;
+&nbsp;    public static void main(String[] args) {
+&nbsp;        // Создаем объект WeatherService. В реальной программе, этот класс
+&nbsp;        // бы обращался к внешнему API для получения температуры.
+<b class="nc">&nbsp;        WeatherService weatherService = new WeatherService();</b>
+&nbsp;
+&nbsp;        // Создаем объект WeatherReporter, передаем ему WeatherService в конструктор.
+<b class="nc">&nbsp;        WeatherReporter weatherReporter = new WeatherReporter(weatherService);</b>
+&nbsp;
+&nbsp;        // Получаем отчет о погоде.
+<b class="nc">&nbsp;        String report = weatherReporter.generateReport();</b>
+&nbsp;
+&nbsp;        // Выводим отчет на консоль.
+<b class="nc">&nbsp;        System.out.println(report);</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    //*
+&nbsp;// 4.4.
+&nbsp;//Вам необходимо написать тест с использованием моков для сервиса бронирования отелей.
+&nbsp;//        Условие: У вас есть класс HotelService с методом public boolean isRoomAvailable(int roomId), который обычно проверяет, доступен ли номер в отеле.
+&nbsp;//Вам необходимо проверить правильность работы класса BookingService, который использует HotelService для бронирования номера, если он доступен.
+&nbsp;// *
+&nbsp;//    public static void main(String[] args) {
+&nbsp;//
+&nbsp;//        // Создание реального экземпляра HotelService
+&nbsp;//        HotelService realHotelService = new HotelService();
+&nbsp;//
+&nbsp;//        // Создание экземпляра BookingService с реальным HotelService
+&nbsp;//        BookingService bookingService = new BookingService(realHotelService);
+&nbsp;//
+&nbsp;//        // Пытаемся забронировать доступный номер (например, номер 2)
+&nbsp;//        if (bookingService.bookRoom(2)) {
+&nbsp;//            System.out.println(&quot;Успешно забронирован номер 2!&quot;);
+&nbsp;//        } else {
+&nbsp;//            System.out.println(&quot;Не удалось забронировать номер 2.&quot;);
+&nbsp;//        }
+&nbsp;//
+&nbsp;//        // Пытаемся забронировать недоступный номер (например, номер 3)
+&nbsp;//        if (bookingService.bookRoom(3)) {
+&nbsp;//            System.out.println(&quot;Успешно забронирован номер 3!&quot;);
+&nbsp;//        } else {
+&nbsp;//            System.out.println(&quot;Не удалось забронировать номер 3.&quot;);
+&nbsp;//        }
+&nbsp;//    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    /*
+&nbsp;      4.5. Вам нужно написать тест с использованием моков для сервиса отправки сообщений.
+&nbsp;      Условие: У вас есть класс MessageService с методом public void sendMessage(String message, String recipient),
+&nbsp;      который отправляет сообщение получателю.
+&nbsp;      Вам необходимо проверить правильность работы класса NotificationService,
+&nbsp;      который использует MessageService для отправки уведомлений.
+&nbsp;    */
+&nbsp;//    public static void main(String[] args) {
+&nbsp;//        MessageService messageService = new MessageService();
+&nbsp;//        NotificationService notificationService = new NotificationService(messageService);
+&nbsp;//
+&nbsp;//        notificationService.sendNotification(&quot;Привет!&quot;, &quot;Анна&quot;);
+&nbsp;//    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    /*
+&nbsp;        4.6.Вам требуется протестировать класс, который обрабатывает запросы к базе данных.
+&nbsp;        Условие: У вас есть класс Database с методом public List&lt;String&gt; query(String sql),
+&nbsp;        который выполняет SQL-запрос и возвращает результат.
+&nbsp;        Вам необходимо проверить правильность работы класса DataProcessor, который использует
+&nbsp;        Database для выполнения запроса и обработки результатов.
+&nbsp;
+&nbsp;     */
+&nbsp;//    public static void main(String[] args) {
+&nbsp;//        // Создаём экземпляр класса Database
+&nbsp;//        Database database = new Database();
+&nbsp;//
+&nbsp;//        // Создаём экземпляр класса DataProcessor, передавая в конструктор database
+&nbsp;//        DataProcessor dataProcessor = new DataProcessor(database);
+&nbsp;//
+&nbsp;//        // Вызываем метод processData и выводим результаты
+&nbsp;//        List&lt;String&gt; data = dataProcessor.processData(&quot;SELECT * FROM table&quot;);
+&nbsp;//        for (String datum : data) {
+&nbsp;//            System.out.println(datum);
+&nbsp;//        }
+&nbsp;//    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    /*
+&nbsp;    * HW4.3. У вас есть класс BookService, который использует интерфейс BookRepository
+&nbsp;    * для получения информации о книгах из базы данных.
+&nbsp;    *  Ваша задача написать unit-тесты для BookService, используя Mockito для создания мок-объекта BookRepository.
+&nbsp;    * */
+&nbsp;//    public static void main(String[] args) {
+&nbsp;//        BookRepository repository = new InMemoryBookRepository();
+&nbsp;//        BookService bookService = new BookService(repository);
+&nbsp;//
+&nbsp;//        Book book1 = bookService.findBookById(&quot;1&quot;);
+&nbsp;//        System.out.println(&quot;Найдена книга: &quot; + book1.getTitle() + &quot; by &quot; + book1.getAuthor());
+&nbsp;//
+&nbsp;//        List&lt;Book&gt; allBooks = bookService.findAllBooks();
+&nbsp;//        System.out.println(&quot;Все книги:&quot;);
+&nbsp;//        for (Book book : allBooks) {
+&nbsp;//            System.out.println(&quot;- &quot; + book.getTitle() + &quot; от &quot; + book.getAuthor());
+&nbsp;//        }
+&nbsp;//    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-11-04 06:58</div>
+</div>
+</body>
+</html>

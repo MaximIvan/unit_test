@@ -1,0 +1,175 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ShopTest</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">seminars.first.hw</a>
+</div>
+
+<h1>Coverage Summary for Class: ShopTest (seminars.first.hw)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ShopTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/29)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package seminars.first.hw;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.Collections;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;import static org.assertj.core.api.Assertions.assertThat;
+&nbsp;
+<b class="nc">&nbsp;public class ShopTest {</b>
+&nbsp;    /*
+&nbsp;     1. ѕроверить, что магазин хранит верный список продуктов (количество продуктов)
+&nbsp;     2. ѕроверить, что магазин возвращает верный самый дорогой продукт getMostExpensiveProduct
+&nbsp;     3. ѕроверить, что магазин возвращает верный отсортированный по цене список продуктов
+&nbsp;    */
+&nbsp;
+&nbsp;    public static void main(String[] args) {
+&nbsp;        // ѕодготовка:
+<b class="nc">&nbsp;        Shop testShop = new Shop();</b>
+<b class="nc">&nbsp;        testShop.setProducts(getShuffleListProducts(getTestListProducts()));</b>
+&nbsp;
+&nbsp;        // ƒействие и проверка результата:
+&nbsp;        // ѕровер€ем, что магазин хранит верный список продуктов (количество продуктов)
+<b class="nc">&nbsp;        assertThat(testShop.getProducts()).hasSize(4);</b>
+&nbsp;
+&nbsp;        // ѕроверить, что магазин возвращает верный самый дорогой продукт getMostExpensiveProduct
+<b class="nc">&nbsp;        assertThat(testShop.getMostExpensiveProduct().getTitle()).isEqualTo(getTestListProducts().get(3).getTitle());</b>
+&nbsp;
+&nbsp;        // ѕроверить, что магазин возвращает верный отсортированный по цене список продуктов
+<b class="nc">&nbsp;        assertThat(testShop.getSortedListProducts().get(0).getCost()).isEqualTo(100);</b>
+<b class="nc">&nbsp;        assertThat(testShop.getSortedListProducts().get(1).getCost()).isEqualTo(150);</b>
+<b class="nc">&nbsp;        assertThat(testShop.getSortedListProducts().get(2).getCost()).isEqualTo(299);</b>
+<b class="nc">&nbsp;        assertThat(testShop.getSortedListProducts().get(3).getCost()).isEqualTo(500);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    static List&lt;Product&gt; getTestListProducts() {
+&nbsp;
+<b class="nc">&nbsp;        Product productA = new Product();</b>
+<b class="nc">&nbsp;        productA.setTitle(&quot;A&quot;);</b>
+<b class="nc">&nbsp;        productA.setCost(100);</b>
+&nbsp;
+<b class="nc">&nbsp;        Product productB = new Product();</b>
+<b class="nc">&nbsp;        productB.setTitle(&quot;B&quot;);</b>
+<b class="nc">&nbsp;        productB.setCost(150);</b>
+&nbsp;
+<b class="nc">&nbsp;        Product productC = new Product();</b>
+<b class="nc">&nbsp;        productC.setTitle(&quot;C&quot;);</b>
+<b class="nc">&nbsp;        productC.setCost(299);</b>
+&nbsp;
+<b class="nc">&nbsp;        Product productD = new Product();</b>
+<b class="nc">&nbsp;        productD.setTitle(&quot;D&quot;);</b>
+<b class="nc">&nbsp;        productD.setCost(500);</b>
+&nbsp;
+<b class="nc">&nbsp;        List&lt;Product&gt; productList = new ArrayList&lt;&gt;();</b>
+&nbsp;
+<b class="nc">&nbsp;        productList.add(productA);</b>
+<b class="nc">&nbsp;        productList.add(productB);</b>
+<b class="nc">&nbsp;        productList.add(productC);</b>
+<b class="nc">&nbsp;        productList.add(productD);</b>
+&nbsp;
+<b class="nc">&nbsp;        return productList;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    static List&lt;Product&gt; getShuffleListProducts(List&lt;Product&gt; productList) {
+<b class="nc">&nbsp;        Collections.shuffle(productList);</b>
+<b class="nc">&nbsp;        return productList;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-11-04 06:58</div>
+</div>
+</body>
+</html>

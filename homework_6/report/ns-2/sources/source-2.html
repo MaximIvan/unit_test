@@ -1,0 +1,356 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Main</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">seminars.first</a>
+</div>
+
+<h1>Coverage Summary for Class: Main (seminars.first)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Main</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/55)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Main$Hero</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/16)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/21)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/71)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package seminars.first;
+&nbsp;
+&nbsp;import java.text.DateFormat;
+&nbsp;import java.text.SimpleDateFormat;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.Arrays;
+&nbsp;import java.util.Calendar;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;import static org.assertj.core.api.Assertions.*;
+&nbsp;
+<b class="nc">&nbsp;public class Main {</b>
+&nbsp;    public static void main(String[] args) {
+&nbsp;        // Проверьте, как работают методы:
+&nbsp;
+&nbsp;//        assertConditionA();
+&nbsp;//
+&nbsp;//        assertConditionB();
+&nbsp;
+&nbsp;//         System.out.println(sum(2_147_483_647, 1));
+&nbsp;//        System.out.println(sum(-20, -30));
+&nbsp;
+&nbsp;        // happyNY();
+&nbsp;
+&nbsp;//         expectedValue();
+&nbsp;
+&nbsp;//        checkingShoppingCart();
+&nbsp;
+&nbsp;        /*
+&nbsp;                assertThat(colors)
+&nbsp;                        .isNotEmpty()             // Массив не должен быть пустым
+&nbsp;                        .hasSize(7)               // Размер массива должен быть равен 7
+&nbsp;                        .doesNotHaveDuplicates()  // Массив не должен содержать повторяющихся элементов
+&nbsp;                        .contains(&quot;orange&quot;, &quot;green&quot;, &quot;violet&quot;) // Массив должен содержать цвета: &quot;orange&quot;, &quot;green&quot;, &quot;violet&quot;
+&nbsp;                        .endsWith(&quot;gold&quot;)        //  Последним цветом в массиве должен быть &quot;gold&quot;
+&nbsp;                        .startsWith(&quot;aqua&quot;)     // Первым цветом в массиве должен быть &quot;aqua&quot;
+&nbsp;                        .containsSequence(&quot;yellow&quot;, &quot;blue&quot;) // В массиве должна быть последовательность цветов &quot;yellow&quot;, &quot;blue&quot;
+&nbsp;                        .doesNotContain(&quot;red&quot;, &quot;black&quot;);    //Массив не должен содержать цвета: &quot;red&quot;, &quot;black&quot;
+&nbsp;        */
+&nbsp;
+&nbsp;//          String[] colors = {&quot;aqua&quot;, &quot;orange&quot;, &quot;yellow&quot;, &quot;blue&quot;, &quot;green&quot;, &quot;violet&quot;, &quot;gold&quot;};
+&nbsp;//
+&nbsp;//          testingJavaCollectionsAssertJ(colors);
+&nbsp;
+<b class="nc">&nbsp;          checkingHero();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //                  Практические задания:
+&nbsp;    // 1.1
+&nbsp;    public static void assertConditionA() {
+<b class="nc">&nbsp;        String[] weekends = {&quot;Суббота&quot;, &quot;Воскресенье&quot;};</b>
+<b class="nc">&nbsp;        assert weekends.length == 3;</b>
+<b class="nc">&nbsp;        System.out.println(&quot;В неделе &quot; + weekends.length + &quot; дня выходных&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // 1.2
+&nbsp;    public static void assertConditionB() {
+<b class="nc">&nbsp;        int x = -1;</b>
+<b class="nc">&nbsp;        assert x &lt; 0;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // 1.3
+&nbsp;    // assert boolean_выражение : сообщение_об_ошибке;
+&nbsp;    // Ariane V - https://habr.com/ru/company/pvs-studio/blog/306748/
+&nbsp;    // sum(2_147_483_647, 1) возвращает &quot;-2147483648&quot;
+&nbsp;    /**
+&nbsp;     * 3) Нужно, используя данную функцию, попробовать сложить два следующих числа
+&nbsp;     * 2_147_483_647 и 1, написать assert если нужно
+&nbsp;     * (https://habr.com/ru/company/pvs-studio/blog/306748/)
+&nbsp;     *
+&nbsp;     * @param a первое число
+&nbsp;     * @param b второе число
+&nbsp;     * @return сумму переданных чисел
+&nbsp;     * @apiNote assert boolean_выражение : сообщение_об_ошибке;
+&nbsp;     */
+&nbsp;    public static int sum(int a, int b) {
+<b class="nc">&nbsp;        assert (long)a + (long)b &lt; Integer.MAX_VALUE:&quot;Ошибка значение вышло за придел int&quot;;</b>
+<b class="nc">&nbsp;        return a + b;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // 1.4
+&nbsp;    // 08/12/2022 06:19:41
+&nbsp;    // windows fail - https://habr.com/ru/company/pvs-studio/blog/698404/
+&nbsp;    public static void happyNY() {
+<b class="nc">&nbsp;        Calendar calendar = Calendar.getInstance();</b>
+<b class="nc">&nbsp;        DateFormat dateFormat = new SimpleDateFormat(&quot;dd/MM/yyyy HH:mm:ss&quot;);</b>
+<b class="nc">&nbsp;        String currentDateTime = dateFormat.format(calendar.getTime());</b>
+&nbsp;
+<b class="nc">&nbsp;        assert currentDateTime.equals(&quot;01/01/2023 00:00:00&quot;) : &quot;Еще 2023 год :(&quot;;</b>
+<b class="nc">&nbsp;        System.out.println(&quot;С новым годом!&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // 1.5
+&nbsp;    // выражение assert верно, нужно исправить код
+&nbsp;    // Вот наиболее распространенный вариант использования. Предположим, вы включаете значение enum:
+&nbsp;    public static void checkingShoppingCart() {
+<b class="nc">&nbsp;        ArrayList&lt;String&gt; productCategories = new ArrayList&lt;&gt;();</b>
+<b class="nc">&nbsp;        productCategories.add(&quot;fruits&quot;);</b>
+<b class="nc">&nbsp;        productCategories.add(&quot;vegetables&quot;);</b>
+<b class="nc">&nbsp;        productCategories.add(&quot;bakery&quot;);</b>
+<b class="nc">&nbsp;        productCategories.add(&quot;drink&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        ArrayList&lt;String&gt; products = new ArrayList&lt;&gt;();</b>
+<b class="nc">&nbsp;        products.add(&quot;apple&quot;);</b>
+<b class="nc">&nbsp;        products.add(&quot;tomato&quot;);</b>
+<b class="nc">&nbsp;        products.add(&quot;bread&quot;);</b>
+<b class="nc">&nbsp;        products.add(&quot;water&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        for (String product : products) {</b>
+<b class="nc">&nbsp;            if (product.equals(&quot;apple&quot;)) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;category: &quot; + productCategories.get(0));</b>
+<b class="nc">&nbsp;            } else if (product.equals(&quot;tomato&quot;)) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;category: &quot; + productCategories.get(1));</b>
+<b class="nc">&nbsp;            } else if (product.equals(&quot;bread&quot;)) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;category: &quot; + productCategories.get(2));</b>
+<b class="nc">&nbsp;            } else if (product.equals(&quot;water&quot;)) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;category: &quot; + productCategories.get(3));</b>
+&nbsp;            } else {
+<b class="nc">&nbsp;                assert false : &quot;Unknown category for the product &quot; + product;</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // 1.6
+&nbsp;    //   AssertJ
+&nbsp;    // ok - assertThat(actual/фактическое).isEqualTo(expected/ожидаемое);
+&nbsp;    // not ok - assertThat(expected/ожидаемое).isEqualTo(actual/фактическое);
+&nbsp;    public static void expectedValue() {
+<b class="nc">&nbsp;        assertThat(sum(2, 3)).isEqualTo(5);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // 1.7
+&nbsp;    public static void testingJavaCollectionsAssertJ(String[] colors) {
+<b class="nc">&nbsp;        assertThat(colors)</b>
+<b class="nc">&nbsp;                .isNotEmpty()             // Массив не должен быть пустым</b>
+<b class="nc">&nbsp;                .hasSize(7)      // Размер массива должен быть равен 7</b>
+<b class="nc">&nbsp;                .doesNotHaveDuplicates() // Массив не должен содержать повторяющихся элементов</b>
+<b class="nc">&nbsp;                .contains(&quot;orange&quot;, &quot;green&quot;, &quot;violet&quot;) // Массив должен содержать цвета: &quot;orange&quot;, &quot;green&quot;, &quot;violet&quot;</b>
+<b class="nc">&nbsp;                .endsWith(&quot;gold&quot;)   //  Последним цветом в массиве должен быть &quot;gold&quot;</b>
+<b class="nc">&nbsp;                .startsWith(&quot;aqua&quot;)     // Первым цветом в массиве должен быть &quot;aqua&quot;</b>
+<b class="nc">&nbsp;                .containsSequence(&quot;yellow&quot;, &quot;blue&quot;)      // В массиве должна быть последовательность цветов &quot;yellow&quot;, &quot;blue&quot;</b>
+<b class="nc">&nbsp;                .doesNotContain(&quot;red&quot;, &quot;black&quot;); //Массив не должен содержать цвета: &quot;red&quot;, &quot;black&quot;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // 1.8
+&nbsp;    public static void checkingHero() {
+&nbsp;
+<b class="nc">&nbsp;        List&lt;String&gt; heroBag = Arrays.asList(&quot;Bow&quot;, &quot;Axe&quot;, &quot;Gold&quot;);</b>
+<b class="nc">&nbsp;        Hero emmett = new Hero(&quot;Emmett&quot;, 50, &quot;sword&quot;, heroBag, true);</b>
+&nbsp;
+&nbsp;        /*
+&nbsp;        1. Проверить, что герой создался с именем Emmett
+&nbsp;        2. Проверить, что значение прочности брони героя равно 50
+&nbsp;        3. Проверить, что у героя оружие типа sword
+&nbsp;        4. Проверить содержимое инвентаря героя (не пустой, размер 3, содержимое &quot;Bow&quot;, &quot;Axe&quot;, &quot;Gold&quot;, порядок не важен)
+&nbsp;        5. Проверить, что герой человек (свойство true)
+&nbsp;        */
+&nbsp;
+&nbsp;        // assert &quot;Emmett&quot;.equals(emmett.getName()): &quot;Name should be Emmett&quot;;
+&nbsp;        // Далее продолжите сами ...
+<b class="nc">&nbsp;        assertThat(emmett.getName()).isEqualTo(&quot;Emmett&quot;).isNotEmpty().hasSize(6);</b>
+<b class="nc">&nbsp;        assertThat(emmett.getArmorStrength()).isEqualTo(50);</b>
+<b class="nc">&nbsp;        assertThat(emmett.getWeapon()).isEqualTo(&quot;sword&quot;);</b>
+<b class="nc">&nbsp;        assertThat(emmett.getBag())</b>
+<b class="nc">&nbsp;                .isNotNull()</b>
+<b class="nc">&nbsp;                .hasSize(3)</b>
+<b class="nc">&nbsp;                .contains(&quot;Bow&quot;, &quot;Axe&quot;, &quot;Gold&quot;);</b>
+<b class="nc">&nbsp;        assertThat(emmett.isHuman()).isTrue();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // 1.8 (Черный ящик)
+&nbsp;    static class Hero {
+&nbsp;        private String name;
+&nbsp;        private int armorStrength;
+&nbsp;        private String weapon;
+&nbsp;        private List&lt;String&gt; bag;
+&nbsp;        private boolean isHuman;
+&nbsp;
+<b class="nc">&nbsp;        public Hero(String name, int armorStrength, String weapon, List&lt;String&gt; bag, boolean isHuman) {</b>
+<b class="nc">&nbsp;            this.name = name;</b>
+<b class="nc">&nbsp;            this.armorStrength = armorStrength;</b>
+<b class="nc">&nbsp;            this.weapon = weapon;</b>
+<b class="nc">&nbsp;            this.bag = bag;</b>
+<b class="nc">&nbsp;            this.isHuman = isHuman;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public String getName() {
+<b class="nc">&nbsp;            return name;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public void setName(String name) {
+<b class="nc">&nbsp;            this.name = name;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public int getArmorStrength() {
+<b class="nc">&nbsp;            return armorStrength;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public void setArmorStrength(int armorStrength) {
+<b class="nc">&nbsp;            this.armorStrength = armorStrength;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public String getWeapon() {
+<b class="nc">&nbsp;            return weapon;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public void setWeapon(String weapon) {
+<b class="nc">&nbsp;            this.weapon = weapon;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public List&lt;String&gt; getBag() {
+<b class="nc">&nbsp;            return bag;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public void setBag(List&lt;String&gt; bag) {
+<b class="nc">&nbsp;            this.bag = bag;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public boolean isHuman() {
+<b class="nc">&nbsp;            return isHuman;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public void setHuman(boolean human) {
+<b class="nc">&nbsp;            isHuman = human;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-11-04 06:58</div>
+</div>
+</body>
+</html>

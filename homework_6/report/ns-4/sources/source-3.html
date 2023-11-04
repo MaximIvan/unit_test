@@ -1,0 +1,168 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Shop</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">seminars.first.homework.Shop</a>
+</div>
+
+<h1>Coverage Summary for Class: Shop (seminars.first.homework.Shop)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Shop</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/20)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package seminars.first.homework.Shop;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.Collections;
+&nbsp;import java.util.Comparator;
+&nbsp;import java.util.List;
+&nbsp;
+<b class="nc">&nbsp;public class Shop {</b>
+&nbsp;    private ArrayList&lt;Product&gt; shop;
+&nbsp;
+&nbsp;    // Геттеры, сеттеры:
+&nbsp;    public void ShopOrders() {
+<b class="nc">&nbsp;        this.shop = new ArrayList&lt;&gt;();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void addProductToShop(Product product) {
+<b class="nc">&nbsp;        shop.add(product);</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    public ArrayList getShop() {
+<b class="nc">&nbsp;        return shop;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void printShopContent() {
+<b class="nc">&nbsp;        for (Product product : shop) {</b>
+<b class="nc">&nbsp;            System.out.println(product);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getLength(){
+<b class="nc">&nbsp;        return shop.size();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public float getProductCostInShop(int i){
+<b class="nc">&nbsp;        return shop.get(i).getCost();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     Метод должен вернуть отсортированный по возрастанию по цене список продуктов
+&nbsp;     */
+&nbsp;
+&nbsp;    public List&lt;Product&gt; sortProductsByPrice() {
+<b class="nc">&nbsp;        Comparator compare = new CompareCost();</b>
+<b class="nc">&nbsp;        Collections.sort(shop, compare);</b>
+<b class="nc">&nbsp;        return shop;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     Метод должен вернуть самый дорогой продукт
+&nbsp;     */
+&nbsp;
+&nbsp;    public Product getMostExpensiveProduct() {
+<b class="nc">&nbsp;        float maxCost = 0;</b>
+<b class="nc">&nbsp;        int index = 0;</b>
+<b class="nc">&nbsp;        for (Product product : shop) {</b>
+<b class="nc">&nbsp;            if (product.getCost() &gt; maxCost) {</b>
+<b class="nc">&nbsp;                maxCost = product.getCost();</b>
+<b class="nc">&nbsp;                index = shop.indexOf(product);</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        return shop.get(index);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-11-04 06:58</div>
+</div>
+</body>
+</html>

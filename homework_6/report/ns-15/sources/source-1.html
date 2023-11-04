@@ -1,0 +1,261 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Cart</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">seminars.second.model</a>
+</div>
+
+<h1>Coverage Summary for Class: Cart (seminars.second.model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Cart</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/72)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package seminars.second.model;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Objects;
+&nbsp;
+&nbsp;public class Cart {
+<b class="nc">&nbsp;    public List&lt;Product&gt; cartItems = new ArrayList&lt;&gt;(); // Корзина с продуктами</b>
+&nbsp;
+&nbsp;    // При создании корзины нужно передать магазин
+&nbsp;    Shop shop;
+&nbsp;
+&nbsp;    private Double totalPrice;
+&nbsp;
+<b class="nc">&nbsp;    public Cart(Shop shop) {</b>
+<b class="nc">&nbsp;        this.shop = shop;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // Метод для добавления продукта в корзину по его id
+&nbsp;    public void addProductToCartByID(int id) {
+<b class="nc">&nbsp;        Product product = getProductByProductID(id);</b>
+&nbsp;
+<b class="nc">&nbsp;        addToCart(product);</b>
+&nbsp;
+<b class="nc">&nbsp;        recalculate();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void recalculate() { // Метод пересчитывает сумму покупки
+<b class="nc">&nbsp;        totalPrice = 0.00d;</b>
+<b class="nc">&nbsp;        for (Product p : cartItems) {</b>
+<b class="nc">&nbsp;            totalPrice += p.getPrice() * p.getQuantity();</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // Чтобы положить продукт в корзину, его нужно сначала найти в магазине
+&nbsp;    private Product getProductByProductID(int id) {
+<b class="nc">&nbsp;        Product product = new Product();</b>
+&nbsp;
+<b class="nc">&nbsp;        List&lt;Product&gt; products = shop.getProductsShop();</b>
+<b class="nc">&nbsp;        for (Product prod : products) {</b>
+<b class="nc">&nbsp;            if (prod.getId() == id) {</b>
+<b class="nc">&nbsp;                product = prod;</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        if (id &gt; shop.getProductsShop().size() || id &lt; 0) {</b>
+&nbsp;            try {
+<b class="nc">&nbsp;                throw new NoSuchFieldException(&quot;Не найден продукт с id: &quot; + id);</b>
+<b class="nc">&nbsp;            } catch (NoSuchFieldException e) {</b>
+<b class="nc">&nbsp;                throw new RuntimeException(&quot;Не найден продукт с id: &quot; + id);</b>
+&nbsp;            }
+&nbsp;        }
+<b class="nc">&nbsp;        return product;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void addToCart(Product product) {
+<b class="nc">&nbsp;        Product productInCart = new Product(product.getId(), product.getName(), product.getPrice(), 0);</b>
+<b class="nc">&nbsp;        Product productInShop = shop.getProductsShop().get(product.getId() - 1);</b>
+&nbsp;
+<b class="nc">&nbsp;        if (productInShop.getQuantity() == 0) {</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Этого товара нет в наличии&quot;);</b>
+<b class="nc">&nbsp;            throw new IllegalStateException(&quot;Этого товара нет в наличии&quot;);</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        // Изменяем кол-во в корзине +1
+<b class="nc">&nbsp;        if (hasContainProduct(productInCart)) {</b>
+<b class="nc">&nbsp;            getContainProduct(productInCart).setQuantity(getContainProduct(productInCart).getQuantity() + 1);</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            productInCart.setQuantity(1);</b>
+<b class="nc">&nbsp;            cartItems.add(productInCart);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        recalculate();</b>
+&nbsp;        // Изменяем кол-во в магазине -1
+<b class="nc">&nbsp;        shop.getProductsShop().get(product.getId() - 1).setQuantity(productInShop.getQuantity() - 1);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    private boolean hasContainProduct(Product product) {
+<b class="nc">&nbsp;        for (Product cartItem : cartItems) {</b>
+<b class="nc">&nbsp;            if (Objects.equals(cartItem.getId(), product.getId())) return true;</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private boolean hasContainProductID(int id) {
+<b class="nc">&nbsp;        for (Product cartItem : cartItems) {</b>
+<b class="nc">&nbsp;            if (Objects.equals(cartItem.getId(), id)) return true;</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // Поиск продукта в корзине, если он был уже добавлен ранее
+&nbsp;    private Product getContainProduct(Product product) {
+<b class="nc">&nbsp;        for (Product cartItem : cartItems) {</b>
+<b class="nc">&nbsp;            if (Objects.equals(cartItem.getId(), product.getId())) return cartItem;</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        return null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void removeProductByID(int id) {
+&nbsp;
+<b class="nc">&nbsp;        if (!hasContainProductID(id)) {</b>
+<b class="nc">&nbsp;            if (!hasContainProductID(id)) {</b>
+&nbsp;                try {
+<b class="nc">&nbsp;                    throw new NoSuchFieldException(&quot;В корзине не найден продукт с id: &quot; + id);</b>
+<b class="nc">&nbsp;                } catch (NoSuchFieldException e) {</b>
+<b class="nc">&nbsp;                    throw new RuntimeException(&quot;В корзине не найден продукт с id: &quot; + id);</b>
+&nbsp;                }
+&nbsp;            }
+&nbsp;        }
+&nbsp;
+&nbsp;        // Изменяем кол-во в корзине -1
+<b class="nc">&nbsp;        Product prod = getProductByProductID(id);</b>
+<b class="nc">&nbsp;        if (hasContainProduct(prod) &amp;&amp; getContainProduct(prod).getQuantity() &gt; 1) {</b>
+<b class="nc">&nbsp;            getContainProduct(prod).setQuantity(getContainProduct(prod).getQuantity() - 1);</b>
+<b class="nc">&nbsp;        } else if (hasContainProduct(prod) &amp;&amp; getContainProduct(prod).getQuantity() == 1) {</b>
+<b class="nc">&nbsp;            cartItems.remove(getContainProduct(prod));</b>
+&nbsp;        }
+&nbsp;
+&nbsp;
+&nbsp;       try {
+<b class="nc">&nbsp;           Thread.sleep(70);</b>
+<b class="nc">&nbsp;       } catch (InterruptedException e) {</b>
+<b class="nc">&nbsp;           throw new RuntimeException(e);</b>
+<b class="nc">&nbsp;       }</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        recalculate();</b>
+&nbsp;
+&nbsp;        // Изменяем кол-во в магазине +1
+<b class="nc">&nbsp;        Product productInShop = shop.getProductsShop().get(id - 1);</b>
+<b class="nc">&nbsp;        shop.getProductsShop().get(id - 1).setQuantity(productInShop.getQuantity() + 1);</b>
+&nbsp;
+&nbsp;        //  if (productInShop.getQuantity() == 0) {
+&nbsp;        //      shop.getProductsShop().remove(productInShop);
+&nbsp;        //   }
+&nbsp;    }
+&nbsp;
+&nbsp;    void printCartItems() {
+<b class="nc">&nbsp;        String format = &quot;%1$-3s| %2$-20s| %3$-9s| %4$-3s\n&quot;;</b>
+<b class="nc">&nbsp;        System.out.println(&quot;Сейчас у вас в корзине:&quot;);</b>
+<b class="nc">&nbsp;        System.out.format(format, &quot;ID&quot;, &quot;Название&quot;, &quot;Цена, р.&quot;, &quot;Кол-во в корзине, шт.&quot;);</b>
+<b class="nc">&nbsp;        for (Product prod : cartItems) {</b>
+<b class="nc">&nbsp;            System.out.format(format, prod.getId(), prod.getName(), prod.getPrice(), prod.getQuantity());</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        System.out.println(&quot;Общая стоимость корзины: &quot; + getTotalPrice() + &quot; р.&quot;);</b>
+<b class="nc">&nbsp;        System.out.println();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public Double getTotalPrice() {
+<b class="nc">&nbsp;        return totalPrice;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setTotalPrice(Double totalPrice) {
+<b class="nc">&nbsp;        this.totalPrice = totalPrice;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-11-04 06:58</div>
+</div>
+</body>
+</html>

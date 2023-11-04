@@ -1,0 +1,199 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > CalculatorTest</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">seminars.first.homework.Calculator</a>
+</div>
+
+<h1>Coverage Summary for Class: CalculatorTest (seminars.first.homework.Calculator)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CalculatorTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/13)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package seminars.first.homework.Calculator;
+&nbsp;
+&nbsp;import static org.assertj.core.api.Assertions.assertThat;
+&nbsp;import static org.assertj.core.api.Assertions.assertThatThrownBy;
+&nbsp;
+<b class="nc">&nbsp;public class CalculatorTest {</b>
+&nbsp;    public static void main(String[] args) {
+&nbsp;        // Проверка базового функционала с целыми числами:
+&nbsp;//        if (8 != Calculator.calculation(2, 6, &#39;+&#39;)) {
+&nbsp;//            throw new AssertionError(&quot;Ошибка в методе&quot;);
+&nbsp;//        }
+&nbsp;//
+&nbsp;//        if (0 != Calculator.calculation(2, 2, &#39;-&#39;)) {
+&nbsp;//            throw new AssertionError(&quot;Ошибка в методе&quot;);
+&nbsp;//        }
+&nbsp;//
+&nbsp;//        if (14 != Calculator.calculation(2, 7, &#39;*&#39;)) {
+&nbsp;//            throw new AssertionError(&quot;Ошибка в методе&quot;);
+&nbsp;//        }
+&nbsp;//
+&nbsp;//        if (2 != Calculator.calculation(100, 50, &#39;/&#39;)) {
+&nbsp;//            throw new AssertionError(&quot;Ошибка в методе&quot;);
+&nbsp;//        }
+&nbsp;
+&nbsp;        // Случаи с неправильными аргументами
+&nbsp;        // аргумент operator типа char, должен вызывать исключение, если он получает не базовые символы (+-*/)
+&nbsp;        // try {
+&nbsp;        //     seminars.first.homework.Calculator.Calculator.calculation(8, 4, &#39;_&#39;);
+&nbsp;        // } catch (IllegalStateException e) {
+&nbsp;        //     if (!e.getMessage().equals(&quot;Unexpected value operator: _&quot;)) {
+&nbsp;        //         throw new AssertionError(&quot;Ошибка в методе&quot;);
+&nbsp;        //     }
+&nbsp;        // }
+&nbsp;
+&nbsp;        // Проверка базового функционала с целыми числами, с использованием утверждений:
+&nbsp;//        assert 8 == Calculator.calculation(2, 6, &#39;+&#39;);
+&nbsp;//        assert 0 == Calculator.calculation(2, 2, &#39;-&#39;);
+&nbsp;//        assert 14 == Calculator.calculation(2, 7, &#39;*&#39;);
+&nbsp;//        assert 2 == Calculator.calculation(100, 50, &#39;/&#39;);
+&nbsp;
+&nbsp;        // Проверка базового функционала с целыми числами, с использованием утверждений AssertJ:
+&nbsp;//        assertThat(Calculator.calculation(2, 6, &#39;+&#39;)).isEqualTo(8);
+&nbsp;//        assertThat(Calculator.calculation(2, 2, &#39;-&#39;)).isEqualTo(0);
+&nbsp;//        assertThat(Calculator.calculation(2, 7, &#39;*&#39;)).isEqualTo(14);
+&nbsp;//        assertThat(Calculator.calculation(100, 50, &#39;/&#39;)).isEqualTo(2);
+&nbsp;
+&nbsp;        // Проверка ожидаемого исключения, с использованием утверждений AssertJ:
+&nbsp;//        assertThatThrownBy(() -&gt;
+&nbsp;//                Calculator.calculation(8, 4, &#39;_&#39;)
+&nbsp;//        ).isInstanceOf(IllegalStateException.class);
+&nbsp;
+&nbsp;//        System.out.println(Calculator.calculation(2_147_483_647, 1, &#39;+&#39;)); // integer overflow
+&nbsp;//        System.out.println(Calculator.squareRootExtraction(169));
+&nbsp;
+&nbsp;        // Примерные решения домашних заданий из 1 лекции:
+&nbsp;
+&nbsp;        // HW1.1: Придумайте и опишите (можно в псевдокоде) функцию извлечения корня и
+&nbsp;        // необходимые проверки для него используя граничные случаи
+&nbsp;//         assertThatThrownBy(() -&gt;
+&nbsp;//                 seminars.first.homework.Calculator.Calculator.squareRootExtraction(0, 1, -1)
+&nbsp;//         ).isInstanceOf(SomeStateException.class);
+&nbsp;
+&nbsp;        // HW1.2: Как будет выглядеть проверка для случая деления на ноль? (с использованием AssertJ)
+&nbsp;//         assertThatThrownBy(() -&gt;
+&nbsp;//                seminars.first.homework.Calculator.Calculator.calculation(5, 0, &#39;/&#39;)
+&nbsp;//         ).isInstanceOf(ArithmeticException.class);
+&nbsp;
+&nbsp;        // HW1.3: Сравните одну и ту же проверку с использованием условий, ассертов, AssertJ
+&nbsp;        // в каком случае стандартное сообщение об ошибке будет более информативным?
+&nbsp;//         if (0 != seminars.first.homework.Calculator.Calculator.calculation(2, 6, &#39;+&#39;)) {
+&nbsp;//             throw new AssertionError(&quot;Ошибка в методе&quot;);
+&nbsp;//         }
+&nbsp;//           assert 0 == seminars.first.homework.Calculator.Calculator.calculation(2, 6, &#39;+&#39;);
+&nbsp;//            assertThat(seminars.first.homework.Calculator.Calculator.calculation(2, 6, &#39;+&#39;)).isEqualTo(0);
+&nbsp;
+&nbsp;
+&nbsp;        /**
+&nbsp;         Проверка метода при недопустимых аргументах
+&nbsp;         */
+<b class="nc">&nbsp;        assertThatThrownBy(() -&gt; Calculator.calculatingDiscount(-100, 10))</b>
+<b class="nc">&nbsp;                .isInstanceOf(ArithmeticException.class)</b>
+<b class="nc">&nbsp;                .hasMessage(&quot;Cумма покупки сосчитана не верно&quot;);</b>
+<b class="nc">&nbsp;        assertThatThrownBy(() -&gt; Calculator.calculatingDiscount(100, -10))</b>
+<b class="nc">&nbsp;                .isInstanceOf(IllegalArgumentException.class)</b>
+<b class="nc">&nbsp;                .hasMessage(&quot;Ошибка в размере скидки&quot;);</b>
+<b class="nc">&nbsp;        assertThatThrownBy(() -&gt; Calculator.calculatingDiscount(100, 101))</b>
+<b class="nc">&nbsp;                .isInstanceOf(IllegalArgumentException.class)</b>
+<b class="nc">&nbsp;                .hasMessage(&quot;Ошибка в размере скидки&quot;);</b>
+&nbsp;        /**
+&nbsp;         Проверка, что метод возвращает правильную сумму покупки со скидкой
+&nbsp;         */
+<b class="nc">&nbsp;        assertThat(Calculator.calculatingDiscount(100, 10)).isEqualTo(90.0);</b>
+<b class="nc">&nbsp;        assertThat(Calculator.calculatingDiscount(100, 20)).isEqualTo(80.0);</b>
+<b class="nc">&nbsp;        assertThat(Calculator.calculatingDiscount(100, 50)).isEqualTo(50.0);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-11-04 06:58</div>
+</div>
+</body>
+</html>

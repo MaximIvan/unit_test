@@ -1,0 +1,163 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SomeService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">seminars.third.coverage</a>
+</div>
+
+<h1>Coverage Summary for Class: SomeService (seminars.third.coverage)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SomeService</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/23)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package seminars.third.coverage;
+&nbsp;
+<b class="nc">&nbsp;public class SomeService {</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 3.1. Метод возвращает Fizz для чисел кратных 3, Buzz для кратных 5, и FizzBuzz для кратных 3 и 5 одновременно
+&nbsp;     */
+&nbsp;    public String fizzBuzz(int input) {
+<b class="nc">&nbsp;        if(input % 3 == 0 &amp;&amp; input % 5 == 0)</b>
+<b class="nc">&nbsp;            return &quot;FizzBuzz&quot;;</b>
+<b class="nc">&nbsp;        if (input % 3 == 0) {</b>
+<b class="nc">&nbsp;            return &quot;Fizz&quot;;</b>
+<b class="nc">&nbsp;        }else if (input % 5 == 0) {</b>
+<b class="nc">&nbsp;            return &quot;Buzz&quot;;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return String.valueOf(input);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 3.2. Метод возвращает true для массивов, которые начинаются или заканчиваются 6, и false - если 6 нет ни в начале ни в конце массива
+&nbsp;     */
+&nbsp;    public boolean firstLast6(int[] array) {
+<b class="nc">&nbsp;        if(array == null || array.length == 0) return false;</b>
+&nbsp;
+<b class="nc">&nbsp;        if(array[0] == 6 || array[array.length - 1] == 6) return true;</b>
+<b class="nc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 3.3. Метод подсчета скидки
+&nbsp;     */
+&nbsp;    public double calculatingDiscount(double purchase, int discount) {
+<b class="nc">&nbsp;        if(purchase &lt; 0)</b>
+<b class="nc">&nbsp;            throw new IllegalArgumentException</b>
+&nbsp;                    (&quot;purchase can&#39;t be less than zero&quot;);
+<b class="nc">&nbsp;        if(discount &lt; 0)</b>
+<b class="nc">&nbsp;            throw new IllegalArgumentException</b>
+&nbsp;                    (&quot;discount can&#39;t be less than zero&quot;);
+<b class="nc">&nbsp;        if(discount &gt; 100)</b>
+<b class="nc">&nbsp;            throw new IllegalArgumentException</b>
+&nbsp;                    (&quot;discount can&#39;t be greater than zero&quot;);
+&nbsp;
+<b class="nc">&nbsp;        return purchase - purchase * discount / 100;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 3.4. Метод принимает на вход 3 числа (int a, b, c). Нужно вернуть их сумму. Однако, если одно из значений равно 13,
+&nbsp;     * то оно не учитывается в сумме. Так, например, если b равно 13, то считается сумма только a и c.
+&nbsp;     */
+&nbsp;    public int calculatingSumThreeNumbers(int first, int second, int third) {
+<b class="nc">&nbsp;        int result = 0;</b>
+<b class="nc">&nbsp;        if(first!= 13) result += first;</b>
+<b class="nc">&nbsp;        if(second!= 13) result += second;</b>
+<b class="nc">&nbsp;        if(third!= 13) result += third;</b>
+<b class="nc">&nbsp;        return result;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-11-04 06:58</div>
+</div>
+</body>
+</html>
